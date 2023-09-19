@@ -3,3 +3,5 @@ A repository for the Major Project for the Case Studies Course in BDSA
 Astle Fernandez
 
 Prasant Pradeep
+
+Aparna Santhosh
