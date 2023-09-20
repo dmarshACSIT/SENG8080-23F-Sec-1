@@ -17,3 +17,5 @@ Saksham Thakur
 Bhavneet Kaur
 
 Jasmitha Gorrepati
+
+Sweet Patel
