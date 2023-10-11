@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from datetime import datetime
 import time
 
 # Define the URL of the job search page
@@ -23,7 +24,8 @@ driver.get(url)
 driver.implicitly_wait(10)
 
 # Create a CSV file for saving job listings
-csv_filename = r"C:/Users/abdul/SENG8080-23F-Sec-1/Project Team 5/jobbank.csv"
+filename = "jobbank_" + datetime.now().strftime("%Y-%m-%d") + ".csv"
+csv_filename = r"C:/Users/abdul/SENG8080-23F-Sec-1/Project Team 5/" + filename
 
 # Create the necessary directory structure if it doesn't exist
 os.makedirs(os.path.dirname(csv_filename), exist_ok=True)
