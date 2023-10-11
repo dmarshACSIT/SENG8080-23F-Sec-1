@@ -3,12 +3,14 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, StaleElementReferenceException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from datetime import datetime
 
 # Define the URL of the job search page
-url = "https://www.workopolis.com/jobsearch/find-jobs?ak=software%20developer&l=elmira%20ontario"
+url = "https://www.workopolis.com/jobsearch/find-jobs?ak=software%20developer&l=Elmira%2C%20ON"
+#url = "https://www.workopolis.com/jobsearch/find-jobs?ak=software%20developer&l=elmira%20ontario"
 
 # Initialize ChromeDriver
 driver_service = ChromeService(executable_path="C:\webdriver\chromedriver-win64\chromedriver-win64\chromedriver.exe")
@@ -16,14 +18,12 @@ driver = webdriver.Chrome(service=driver_service)
 
 # Navigate to the URL
 driver.get(url)
-
+print()
 # Create a CSV file for saving job listings
-csv_filename = r"C:/Users/abdul/SENG8080-23F-Sec-1/Project Team 5/workopolis.csv"
+filename =  "workopolis_" + datetime.now().strftime("%Y-%m-%d") + ".csv"
+csv_filename = r"C:/Users/abdul/SENG8080-23F-Sec-1/Project Team 5/" + filename
 
-# Create the necessary directory structure if it doesn't exist
-os.makedirs(os.path.dirname(csv_filename), exist_ok=True)
-
-# Now you can open and write to the CSV file
+#now you can open CSV and write to file
 with open(csv_filename, mode='w', newline='', encoding='utf-8') as csv_file:
     fieldnames = ['Job Title', 'Company', 'Location', 'Estimated Salary']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -54,7 +54,17 @@ with open(csv_filename, mode='w', newline='', encoding='utf-8') as csv_file:
                     location = "N/A"
 
                 try:
-                    salary = job_listing.find_element(By.CLASS_NAME, 'Estimated_Salary').text.strip()
+                    #salary = job_listing.find_element(By.CLASS_NAME, 'SalaryEstimate-value').text.strip()
+                    estimated_salary_element = job_listing.find_elements(By.CLASS_NAME, 'Estimated_Salary')
+                    salary_element = job_listing.find_elements(By.CLASS_NAME, 'Salary')
+                    
+                    # Use the first one found, or "N/A" if neither is found
+                    if estimated_salary_element:
+                        salary = estimated_salary_element[0].text.strip()
+                    elif salary_element:
+                        salary = salary_element[0].text.strip()
+                    else:
+                        salary = "N/A"
                 except NoSuchElementException:
                     salary = "N/A"
 
@@ -72,6 +82,8 @@ with open(csv_filename, mode='w', newline='', encoding='utf-8') as csv_file:
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'SerpJob')))
         except TimeoutException:
             print("Timeout exception occurred. Continuing to the next page.")
+        except StaleElementReferenceException:
+            print("Stale element reference occurred. Retrying...")
         except Exception as e:
             print("An error occurred:", str(e))
             break
