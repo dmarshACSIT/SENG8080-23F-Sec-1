@@ -1,5 +1,6 @@
 # SENG8080-23F-Sec-1
 A repository for the Major Project for the Case Studies Course in BDSA
+
 Astle Fernandez
 
 Prasant Pradeep
@@ -54,10 +55,13 @@ Nilesh Pandey
 
 Ajay Luhar
 
-
+Himani Sharma
 
 Dhwani savani
 
 Joe Aju
 
 Gokul Mangalathu Mattathil Venugopal
+
+Avinash kumar
+Rizwi Liakath Padinjareveetil
