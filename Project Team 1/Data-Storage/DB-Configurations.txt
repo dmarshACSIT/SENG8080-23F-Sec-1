@@ -1,0 +1,26 @@
+DB CREDENTIALS:
+===============	
+	host = 'localhost'
+    user = 'root'
+    password = 'password'
+    database = 'case_study_spotify_db'
+	
+DB TABLE SCHEMA
+================
+
+CREATE TABLE `audio_features` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `track_name` varchar(255) DEFAULT NULL,
+  `artist_name` varchar(255) DEFAULT NULL,
+  `acousticness` float DEFAULT NULL,
+  `danceability` float DEFAULT NULL,
+  `energy` float DEFAULT NULL,
+  `instrumentalness` float DEFAULT NULL,
+  `liveness` float DEFAULT NULL,
+  `loudness` float DEFAULT NULL,
+  `speechiness` float DEFAULT NULL,
+  `tempo` float DEFAULT NULL,
+  `valence` float DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
