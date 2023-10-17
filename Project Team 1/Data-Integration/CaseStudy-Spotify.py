@@ -39,7 +39,7 @@ def create_track_dataframe(track_features):
 
 def search_tracks_by_year(sp, year):
     search_query = f"year:{year}"
-    results = sp.search(q=search_query, type="track")
+    results = sp.search(q=search_query, type="track", limit=50)
     return results
 
 def create_audio_features_dataframe(results, sp):
@@ -62,19 +62,20 @@ def create_audio_features_dataframe(results, sp):
             track_features = audio_features[0]
 
             # Create a DataFrame with the current track's audio features
-            current_track_df = pd.DataFrame({
-                'Track Name': [track['name']],
-                'Artist Name': [track['artists'][0]['name']],
-                'Acousticness': [track_features['acousticness']],
-                'Danceability': [track_features['danceability']],
-                'Energy': [track_features['energy']],
-                'Instrumentalness': [track_features['instrumentalness']],
-                'Liveness': [track_features['liveness']],
-                'Loudness': [track_features['loudness']],
-                'Speechiness': [track_features['speechiness']],
-                'Tempo': [track_features['tempo']],
-                'Valence': [track_features['valence']]
-            })
+            if track_features is not None:
+                current_track_df = pd.DataFrame({
+                    'Track Name': [track['name']],
+                    'Artist Name': [track['artists'][0]['name']],
+                    'Acousticness': [track_features['acousticness']],
+                    'Danceability': [track_features['danceability']],
+                    'Energy': [track_features['energy']],
+                    'Instrumentalness': [track_features['instrumentalness']],
+                    'Liveness': [track_features['liveness']],
+                    'Loudness': [track_features['loudness']],
+                    'Speechiness': [track_features['speechiness']],
+                    'Tempo': [track_features['tempo']],
+                    'Valence': [track_features['valence']]
+                })
 
             # Concatenate the current track's DataFrame to the main audio_features_df
             audio_features_df = pd.concat([audio_features_df, current_track_df], ignore_index=True)
