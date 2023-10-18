@@ -1,1 +1,8 @@
-Sweet Patel
+Group 1 (CaseStudy on Spotify Data)
+Gorrepati, Jasmitha
+Pradeep, Prasant
+Venugopal, Vidhya
+Harshavardhan
+Case Study on Spotify Data: Trend Analysis: Analyze how the audio features of a specific artist have evolved over time.
+We will be analyzing the trends in tempo, loudness, or other musical attributes using Python and importing the Spotipy package to
+retrieve the real-time data through the Spotify API. We are planning to use MySQL to persist the data that has evolved over time.
