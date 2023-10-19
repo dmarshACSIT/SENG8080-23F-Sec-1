@@ -1,3 +1,11 @@
+"""This program does the trend analysis on musical attributes for an artist over a time
+
+    by establishing API connection to Spotify data source
+
+    Fetch the track data based on year
+
+    Stores the data in MySQL DB
+   """
 import pandas as pd
 import os
 import spotipy
@@ -9,13 +17,16 @@ import mysql.connector
 CLIENT_ID = "91106b1989144f538ad4fbe1827a96d7"
 CLIENT_SECRET = "469e4a0d56d74349b11edfc726ed4596"
 
+# Establish API connection using Spotify Credentials
 def create_spotify_client():
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     return spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+# Returns the audio features from the returned API response
 def get_audio_features(sp, track_uri):
     return sp.audio_features(track_uri)
 
+# Creates the track dataframe from the returned API response
 def create_track_dataframe(track_features):
     if track_features:
         track_name = track_features.get('name', 'Unknown')
@@ -37,11 +48,13 @@ def create_track_dataframe(track_features):
     else:
         return None
 
+# Search API Request based on year
 def search_tracks_by_year(sp, year):
     search_query = f"year:{year}"
     results = sp.search(q=search_query, type="track", limit=50)
     return results
 
+# Creates the track dataframe from the returned API response
 def create_audio_features_dataframe(results, sp):
     audio_features_df = pd.DataFrame(columns=[
         'Track Name', 'Artist Name', 'Acousticness', 'Danceability',
@@ -85,10 +98,11 @@ def create_audio_features_dataframe(results, sp):
     
     return audio_features_df
 
-
+# Establish MySQL DB Connection
 def connect_to_database(host, user, password, database):
     return mysql.connector.connect(host=host, user=user, password=password, database=database)
 
+# Create audio_feature DB table if it does not exists
 def create_audio_features_table(connection):
     create_table_query = """
     CREATE TABLE IF NOT EXISTS audio_features (
@@ -110,6 +124,7 @@ def create_audio_features_table(connection):
     cursor = connection.cursor()
     cursor.execute(create_table_query)
 
+# Inserting the audio feature data into the DB table
 def insert_audio_features_data(connection, audio_features_df, year):
     insert_query = """
     INSERT INTO audio_features (
@@ -136,6 +151,7 @@ def insert_audio_features_data(connection, audio_features_df, year):
         cursor.execute(insert_query, values)
     connection.commit()
 
+# Main implementation method
 def main():
     sp = create_spotify_client()
  
@@ -157,5 +173,6 @@ def main():
     insert_audio_features_data(connection, audio_features_df, year)
     connection.close()
 
+# Main Initial Execution
 if __name__ == "__main__":
     main()
