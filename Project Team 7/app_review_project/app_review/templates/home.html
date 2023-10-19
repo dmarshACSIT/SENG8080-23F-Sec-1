@@ -1,0 +1,148 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+        <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css"> -->
+
+        <!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+        <!-- <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script> -->
+    <title>Home Page</title>
+    <script src="{% static 'home.js' %}"></script>
+</head>
+
+<body>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>-->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">App Detection</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Hello, {{user}}</a>
+                    </li>
+
+                </ul>
+                <!-- <button class="btn btn-outline-success" type="submit">Logout</button> -->
+
+            </div>
+        </div>
+        <a href="/logout" class="navbar-text" style="padding-right: 1%; text-decoration: none;">
+            Logout!
+        </a>
+    </nav>
+    <br>
+<style>
+    table {
+  table-layout:fixed;
+}
+table td {
+  word-wrap: break-word;
+  max-width: 400px;
+}
+#app_datatable td {
+  white-space:inherit;
+}
+    </style>
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-md-3" style="padding-left: 14%;">
+                <label for="exampleDataList" class="form-label" style="font-size: 148%;">Select App:</label>
+            </div>
+            <div class="col-md-3">
+                <form method="POST" action="{% url 'get_app_data' %}" id="app_data_form">
+                {% csrf_token %}
+                <input class="form-control" list="datalistOptions" id="exampleDataList" name="app_name" placeholder="Type to search..." required>
+                <datalist id="datalistOptions">
+                    {% for app_option in app_list %}
+                    <option value="{{app_option}}">
+                    {% endfor %}
+                </datalist>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-outline-light" id="submit-form" style="background-color: lightslategray;">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h6 style="margin-left: 38%;">Please Select App to see analysis</h6>
+        </div>
+    </div>
+<br><br>
+
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-md-3" style="padding-left: 10%;">
+                <label for="exampleCategoryList" class="form-label" style="font-size: 148%;">Select Category:</label>
+            </div>
+            <div class="col-md-3">
+                <form method="POST" action="{% url 'get_category_wise_data' %}" id="category_data_form">
+                {% csrf_token %}
+                <input class="form-control" list="catagorylistOptions" id="exampleCategoryList" name="category_name" placeholder="Type to search..." required>
+                <datalist id="catagorylistOptions">
+                    
+                    {% for category in app_categoris %}
+                    <option value="{{category | first}}">
+                    {% endfor %}
+                </datalist>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-outline-light" id="submit-category-form" style="background-color: lightslategray;">Search</button>
+            </div>
+        </div>
+    </div>
+    <!-- container for app related data -->
+    {% if error_message %}
+    <p class="error-message" style="color: red; margin-left: 40%;">{{ error_message }}</p>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <h6 style="margin-left: 38%;">Please Select App Category</h6>
+        </div>
+    </div>
+
+    <!-- container for review pia chart-->
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+
+    <!-- container for kmeans algorithm output-->
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</body>
+</html>
