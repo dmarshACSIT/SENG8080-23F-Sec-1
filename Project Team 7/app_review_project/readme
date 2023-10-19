@@ -1,0 +1,10 @@
+Steps to run the project:
+
+1) extract the folder
+2) open that folder into VS code and open new terminal inside it
+3) now inside /app_review_project you will see "myenv" then run this command: source myenv/bin/activate
+4) now goto /app_review folder
+5) now run this command: pip install -r requirements.txt : which will install the required packages
+6) then run this command : python3 manage.py runserver
+7) then open "localhost:8000" or http://127.0.0.1:8000/ link in your blowser
+8) there you will see the login form : username: ajay , password: ajay
