@@ -1,6 +1,6 @@
 import requests
 
-# Replace with your Last.fm API key
+
 API_KEY = '633e428ce3dee2b7f144fdaebf99fa31'
 
 # Define the base URL for Last.fm API
@@ -25,7 +25,7 @@ def get_classical_artist_top_tracks(artist_name):
 
 
 if __name__ == '__main__':
-    artist_name = 'Ludwig van Beethoven'  # Replace with the artist you want to collect data for
+    artist_name = 'Ludwig van Beethoven'  
     top_tracks = get_classical_artist_top_tracks(artist_name)
     
     if top_tracks:
