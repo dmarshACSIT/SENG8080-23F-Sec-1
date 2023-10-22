@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import json
 
 # Replace with your API key and email
 api_key = '3OTszDGwFM2jGM5+TBfffs0SNeRvOqq9o5w5C/mM4XI='
@@ -51,6 +52,18 @@ while True:
 
     # Increment the page number
     page += 1
+
+# Split 'MatchedObjectDescriptor' into separate columns
+unique_keys = {'PositionFormattedDescription', 'UserArea', 'DepartmentName', 'PositionURI', 'PositionTitle', 'JobCategory',
+               'OrganizationName', 'PositionLocation', 'PositionRemuneration', 'JobGrade', 'PositionStartDate',
+               'ApplicationCloseDate', 'PositionLocationDisplay', 'ApplyURI', 'SubAgency', 'QualificationSummary',
+               'PositionOfferingType', 'PositionSchedule', 'PublicationStartDate', 'PositionID', 'PositionEndDate'}
+
+for key in unique_keys:
+    all_data_df[key] = all_data_df['MatchedObjectDescriptor'].apply(lambda x: x.get(key) if isinstance(x, dict) else None)
+
+# Drop the original 'MatchedObjectDescriptor' column
+all_data_df.drop('MatchedObjectDescriptor', axis=1, inplace=True)
 
 # Print the DataFrame with all data
 print(all_data_df)
