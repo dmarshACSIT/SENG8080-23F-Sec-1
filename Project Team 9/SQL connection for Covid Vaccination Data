@@ -3,7 +3,6 @@ import numpy as np
 import re
 import pyodbc
 
-
 df = pd.read_csv("C:/Users/nikhl/OneDrive/Desktop/Case rates by vaccination status and age group.csv")
 
 # Remove empty columns
