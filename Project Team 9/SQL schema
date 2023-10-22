@@ -17,3 +17,32 @@ CREATE TABLE [dbo].[covid_statistic](
     [Day] [date] NULL
 ) ON [PRIMARY]
 GO
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+USE [Covid]
+GO
+
+/****** Object:  Table [dbo].[covid_vaccination]    Script Date: 2023-10-21 8:52:09 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[covid_vaccination](
+	[id] [int] NULL,
+	[cases_unvac_rate_per100K] [decimal](5, 2) NULL,
+	[cases_partial_vac_rate_per100K] [decimal](5, 2) NULL,
+	[cases_notfull_vac_rate_per100K] [decimal](5, 2) NULL,
+	[cases_full_vac_rate_per100K] [decimal](5, 2) NULL,
+	[cases_boost_vac_rate_per100K] [decimal](5, 2) NULL,
+	[cases_unvac_rate_7ma] [decimal](5, 2) NULL,
+	[cases_partial_vac_rate_7ma] [decimal](5, 2) NULL,
+	[cases_notfull_vac_rate_7ma] [decimal](5, 2) NULL,
+	[cases_full_vac_rate_7ma] [decimal](5, 2) NULL,
+	[cases_boost_vac_rate_7ma] [decimal](5, 2) NULL,
+	[highest_age] [decimal](5, 2) NULL
+) ON [PRIMARY]
+GO
