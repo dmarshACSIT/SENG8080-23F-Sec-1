@@ -1,1 +1,56 @@
-Sweet Patel
+# Case Study on Spotify Data - Trend Analysis
+Analyze how the audio features of a specific artist have evolved over time.
+We will be analyzing the trends in tempo, loudness, or other musical attributes using Python and importing the Spotipy package to
+retrieve the real-time data through the Spotify API. We are planning to use MySQL to persist the data that has evolved over time.
+
+Prerequisites
+
+1. Install the Spotify package
+ ```bash
+ pip3 install spotipy
+ ```
+2.  Create or Login to an account in Spotify Marketplace using your Visual Studio Code IDE
+
+3. Login in to Spotify Developers Community and Create an App using the App Name and Redirect URL In order to get the Client Credentials
+
+Installation
+
+1. Create the Mysql database
+```bash
+mysql -u root -p -e "CREATE DATABASE case_study_spotify_db"
+```
+With Following Credentials:
+```bash
+DATABASE_NAME = "case_study_spotify_db"
+MYSQL_USERNAME = "root"
+MYSQL_HOST = "localhost"
+MYSQL_PASSWORD = "password"
+```
+
+Execution
+
+1. Use the Spotify credentials in your Python Program to establish the connection successfully to fetch the track records based on musical attributes.
+	
+2. Run the python file
+```bash
+python CaseStudy-Spotify.py
+```
+
+Contributions
+
+Group 1 (CaseStudy on Spotify Data)
+Gorrepati, Jasmitha
+Pradeep, Prasant
+Venugopal, Vidhya
+Harshavardhan
+
+Citations
+
+Elgiriyewithana, N. (2023, August 26). Most streamed Spotify Songs 2023. Kaggle. https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023 
+S, T. (2021, April 14). Preliminary data analysis on Spotify data using API. Medium. https://medium.com/web-mining-is688-spring-2021/preliminary-data-analysis-on-spotify-data-using-api-a84bb0aae00c 
+Onim, J. (2022, March 25). Spotify data analysis with python. Medium. https://blog.devgenius.io/spotify-data-analysis-with-python-a727542beaa7 
+Spotify. (2023). Web api. Web API | Spotify for Developers. https://developer.spotify.com/documentation/web-api 
+
+Contact
+
+Vvenugopal2970@conestogac.on.ca
