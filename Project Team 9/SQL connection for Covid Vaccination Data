@@ -1,0 +1,98 @@
+import pandas as pd
+import numpy as np
+import re
+import pyodbc
+
+
+df = pd.read_csv("C:/Users/nikhl/OneDrive/Desktop/Case rates by vaccination status and age group.csv")
+
+# Remove empty columns
+df = df.dropna(axis=1, how='all')
+
+# Replace empty values with 0
+df = df.fillna(0)
+
+# Drop dullicates
+df = df.drop_duplicates()
+
+
+# Function to clean and extract the highest age
+def clean_age(agegroup):
+    agegroup = agegroup.replace('+', '')  # Remove '+'
+    agegroup = agegroup.replace('-', ' to ')  # Replace '-' with ' to '
+    agegroup = agegroup.replace('yrs', '')  # Remove 'yrs'
+    
+    # Skip 'ALL' values
+    if agegroup == 'ALL':
+        return None
+    
+    ages = agegroup.split(' to ')
+    if len(ages) == 2:
+        return max(int(ages[0]), int(ages[1]))
+    elif len(ages) == 1:
+        return int(ages[0])
+    else:
+        return None
+
+# Apply the cleaning function to the 'agegroup' column
+df['highest_age'] = df['agegroup'].apply(clean_age)
+
+# Drop the original 'agegroup' column if not needed
+df = df.drop(columns=['agegroup'])
+
+# Clean the date column and extract only the date part
+df['date'] = pd.to_datetime(df['date']).dt.date
+
+# Define a function to identify and handle outliers using IQR
+def handle_outliers_iqr(df, column_name):
+    Q1 = df[column_name].quantile(0.25)
+    Q3 = df[column_name].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+
+    # Filter out the outliers
+    filtered_data = df[(df[column_name] >= lower_bound) & (df[column_name] <= upper_bound)]
+    
+    return filtered_data
+
+# Apply the handle_outliers_iqr function to the columns where you want to handle outliers
+columns_to_handle_outliers = ['cases_unvac_rate_per100K', 'cases_partial_vac_rate_per100K', 'cases_notfull_vac_rate_per100K', 'cases_full_vac_rate_per100K', 'cases_boost_vac_rate_per100K']
+for column in columns_to_handle_outliers:
+    df = handle_outliers_iqr(df, column)
+
+df.dropna(subset=['highest_age'], inplace=True)
+print(df)
+
+# SQL Server and database details
+server_name = 'Nik'
+database_name = 'Covid'
+
+# Construct the connection string for Windows Authentication    
+conn_str = f'Driver={{SQL Server}};Server={server_name};Database={database_name};Trusted_Connection=yes;'
+
+# Establish a connection to the MSSQL database
+try:
+    db = pyodbc.connect(conn_str)
+    cursor = db.cursor()
+
+    # Define the table name in the database
+    table_name = 'covid_vaccination'
+
+    # Create a query to insert data into the table
+    insert_query = f"INSERT INTO {table_name} (id, cases_unvac_rate_per100K, cases_partial_vac_rate_per100K,cases_notfull_vac_rate_per100K,cases_full_vac_rate_per100K,cases_boost_vac_rate_per100K,cases_unvac_rate_7ma,cases_partial_vac_rate_7ma,cases_notfull_vac_rate_7ma,cases_full_vac_rate_7ma,cases_boost_vac_rate_7ma,highest_age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+
+    # Loop through rows in the DataFrame and insert data into the table
+    print(111)
+    for index, row in df.iterrows():
+        print(2)
+        cursor.execute(insert_query, row["_id"], row["cases_unvac_rate_per100K"], row["cases_partial_vac_rate_per100K"],row["cases_notfull_vac_rate_per100K"],row["cases_full_vac_rate_per100K"],row["cases_boost_vac_rate_per100K"],row["cases_unvac_rate_7ma"],row["cases_partial_vac_rate_7ma"],row["cases_notfull_vac_rate_7ma"],row["cases_full_vac_rate_7ma"],row["cases_boost_vac_rate_7ma"],row["highest_age"])
+        print(insert_query, row["_id"], row["date"], row["cases_unvac_rate_per100K"], row["cases_partial_vac_rate_per100K"],row["cases_notfull_vac_rate_per100K"],row["cases_full_vac_rate_per100K"],row["cases_boost_vac_rate_per100K"],row["cases_unvac_rate_7ma"],row["cases_partial_vac_rate_7ma"],row["cases_notfull_vac_rate_7ma"],row["cases_full_vac_rate_7ma"],row["cases_boost_vac_rate_7ma"],row["highest_age"])
+        db.commit()
+except pyodbc.Error as ex:
+    print(f"Error connecting to the database: {ex}")
+finally:
+    if 'cursor' in locals():
+        cursor.close()
+    if 'db' in locals():
+        db.close()
