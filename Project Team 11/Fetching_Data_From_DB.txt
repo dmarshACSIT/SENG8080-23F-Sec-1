@@ -1,0 +1,17 @@
+# Query data from MongoDB
+db = conn.bhavneet_project
+collection = db.music_rec
+cursor = collection.find({})
+data = list(cursor)
+
+# Create a DataFrame from the MongoDB data
+music_data_frame = pd.DataFrame(data)
+
+# Close the MongoDB connection
+conn.close()
+
+# Display the DataFrame
+print(music_data_frame)
+
+
+print(music_data_frame.isnull().sum())
