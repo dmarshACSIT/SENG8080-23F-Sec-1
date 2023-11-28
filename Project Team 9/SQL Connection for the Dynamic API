@@ -1,0 +1,84 @@
+from datetime import datetime
+import requests
+import pandas as pd
+import pyodbc
+
+url = "https://covid-193.p.rapidapi.com/statistics"
+
+headers = {
+    "X-RapidAPI-Key": "810449a9a0msh5d5297817295233p174bbdjsn1c38e70f798a",
+    "X-RapidAPI-Host": "covid-193.p.rapidapi.com"
+}
+
+response = requests.get(url, headers=headers)
+
+data = response.json()  # Parse the JSON response
+
+# Check if the 'response' key exists and contains data
+if 'response' in data:
+    covid_data_list = []
+    for entry in data['response']:
+        continent = entry['continent']
+        country = entry['country']
+        population = entry['population']
+        total_cases = entry['cases']['total']
+        total_cases_active = entry['cases']['active']
+        day = entry['day']
+        # print(total_cases_active)
+        # Skip entries with 'population' as 'None'
+        if population is not None:
+            if total_cases_active is not None:
+            # print(population)
+                covid_data_list.append([continent, country, population, total_cases, total_cases_active, day])
+
+
+    # Create a Pandas DataFrame
+    columns = ['Continent', 'Country', 'Population', 'Total Cases', 'Total Active Cases', 'Day']
+    covid_df = pd.DataFrame(covid_data_list, columns=columns)
+    # Create a Pandas DataFrame with explicit data types
+    covid_df = pd.DataFrame(covid_data_list, columns=columns)
+    # print(covid_df['Total Cases'])
+    # if covid_df['Total Active Cases']
+    # print(covid_df['Total Active Cases'])
+    # covid_df['Population'] = covid_df['Population'].astype(int)
+    # covid_df['Total Cases'] = covid_df['Total Cases'].astype(int)
+    # covid_df['Total Active Cases'] = covid_df['Total Active Cases'].astype(int)
+
+    # covid_df['Time'] = pd.to_datetime(covid_df['Time'])
+
+
+    print(covid_df)
+
+    # SQL Server and database details
+    server_name = 'Nik'
+    database_name = 'Covid'
+
+    # Construct the connection string for Windows Authentication    
+    conn_str = f'Driver={{SQL Server}};Server={server_name};Database={database_name};Trusted_Connection=yes;'
+
+    # Establish a connection to the MSSQL database
+    try:
+        db = pyodbc.connect(conn_str)
+        cursor = db.cursor()
+
+        # Define the table name in the database
+        table_name = 'covid_statistic'
+
+        # Create a query to insert data into the table
+        insert_query = f"INSERT INTO {table_name} (Continent, Country, [Population], TotalCases, TotalActiveCases,[Day]) VALUES (?, ?, ?, ?, ?, ?)"
+
+        # Loop through rows in the DataFrame and insert data into the table
+        
+        for index, row in covid_df.iterrows():
+            cursor.execute(insert_query, row["Continent"], row["Country"], row["Population"], row["Total Cases"], row["Total Active Cases"],row["Day"])
+            db.commit()
+    except pyodbc.Error as ex:
+        print(f"Error connecting to the database: {ex}")
+    finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'db' in locals():
+            db.close()
+
+else:
+    print("No 'response' key found in the JSON data.")

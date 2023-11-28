@@ -1,0 +1,42 @@
+import sqlite3
+
+classical_music_data = [
+    {'playlist': 'Classical Playlist 1', 'track': 'Symphony No. 5', 'artist': 'Beethoven'},
+    {'playlist': 'Classical Playlist 2', 'track': 'Moonlight Sonata', 'artist': 'Beethoven'},
+    # Add more data here
+]
+
+# Establish a connection to the database (or create a new one if it doesn't exist)
+conn = sqlite3.connect('classical_music.db')
+
+# Create a cursor object to execute SQL commands
+cursor = conn.cursor()
+
+# Create a table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS classical_music (
+        id INTEGER PRIMARY KEY,
+        playlist TEXT,
+        track TEXT,
+        artist TEXT
+    )
+''')
+
+# Insert data into the table
+for data in classical_music_data:
+    cursor.execute('''
+        INSERT INTO classical_music (playlist, track, artist)
+        VALUES (?, ?, ?)
+        ''', (data['playlist'], data['track'], data['artist']))
+
+# Commit the changes
+conn.commit()
+
+# Fetch and print the data
+cursor.execute("SELECT * FROM classical_music")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
+
+# Close the connection
+conn.close()
