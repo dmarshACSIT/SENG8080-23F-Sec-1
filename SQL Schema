@@ -1,0 +1,19 @@
+USE [Covid]
+GO
+
+/****** Object:  Table [dbo].[covid_statistic]    Script Date: 2023-10-21 1:45:04 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[covid_statistic](
+    [Continent] [nvarchar](255) NULL,
+    [Country] [nvarchar](255) NULL,
+    [Population] [int] NULL,
+    [TotalCases] [int] NULL,
+    [TotalActiveCases] [numeric](13, 2) NULL,
+    [Day] [date] NULL
+) ON [PRIMARY]
+GO
