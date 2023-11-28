@@ -1,12 +1,12 @@
-Job Title,Company,Location,Min Salary,Max Salary
-software developer,Aceit Digital Inc.,"Calgary, AB",81120.0,81120.0
-software developer,onsemi,"Waterloo, ON",,
-software developer,Titanium Agency Inc,"Waterloo, ON",75000.00,75000.00
-software developer,MUNDAIR CONSULTING LTD.,"Guelph, ON",89960.0,89960.0
-senior software developer,Go Integrations,"Toronto, ON",70000.00,75000.00
-software developer,Mako Financial Technologies Inc.,"Camrose, AB",87320.00,87320.00
-software developer,GLOBAL DEVELOPMENT WORKS LTD.,"Kitchener, ON",90480.0,90480.0
-software developer,"ClifyX, INC",Various locations,,
-software developer,Capgemini Engineering CA,"Kitchener, ON",,
-software developer,Voiant Group,Various locations,,
-software developer,VON Canada,"Ottawa, ON",65996.00,71551.00
+Job Title,Company,Location,Min Salary,Max Salary,Retrieved Date
+software developer,Aceit Digital Inc.,"Calgary, AB",81120.0,81120.0,2023-10-25
+software developer,onsemi,"Waterloo, ON",,,2023-10-25
+software developer,Titanium Agency Inc,"Waterloo, ON",75000.00,75000.00,2023-10-25
+software developer,MUNDAIR CONSULTING LTD.,"Guelph, ON",89960.0,89960.0,2023-10-25
+senior software developer,Go Integrations,"Toronto, ON",70000.00,75000.00,2023-10-25
+software developer,Mako Financial Technologies Inc.,"Camrose, AB",87320.00,87320.00,2023-10-25
+software developer,GLOBAL DEVELOPMENT WORKS LTD.,"Kitchener, ON",90480.0,90480.0,2023-10-25
+software developer,"ClifyX, INC",Various locations,,,2023-10-25
+software developer,Capgemini Engineering CA,"Kitchener, ON",,,2023-10-25
+software developer,Voiant Group,Various locations,,,2023-10-25
+software developer,VON Canada,"Ottawa, ON",65996.00,71551.00,2023-10-25

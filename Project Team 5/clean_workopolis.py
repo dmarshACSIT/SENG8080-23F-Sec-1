@@ -53,7 +53,8 @@ df[["Min Salary", "Max Salary"]] = df["Estimated Salary"].apply(extract_salary)
 
 #df['Job Age'] = df['Job Age'].apply(calculate_date)
 
-column_order = ['Job Title', 'Company', 'Location', 'Min Salary', 'Max Salary']#, 'Job Age']
+df['Retrieved Date'] = '2023-11-22'
+column_order = ['Job Title', 'Company', 'Location', 'Min Salary', 'Max Salary','Retrieved Date']#, 'Job Age']
 
 df = df[column_order]
 
