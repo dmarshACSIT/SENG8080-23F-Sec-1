@@ -1,0 +1,13 @@
+Open Terminal ----
+
+conda create -n music_rec -y python=3.9.18 jupyter
+pip install -r requirements.txt
+
+brew services start mongodb-community
+
+
+If want to check mongodb in Terminal -
+mongsh
+use database_name
+show collections
+db.collection_name.find()

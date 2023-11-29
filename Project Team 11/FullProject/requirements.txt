@@ -1,0 +1,10 @@
+spotipy
+pandas
+numpy
+matplotlib
+sklearn
+flask
+plotly
+dash
+pymongo
+seaborn
