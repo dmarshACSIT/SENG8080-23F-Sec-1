@@ -6,7 +6,6 @@ import traceback
 from datetime import datetime
 
 
-
 def load_config(config_file):
     config = configparser.ConfigParser()
     config.read(config_file)
@@ -73,15 +72,30 @@ def format_date(value):
 
 def clean_data(row):
     # Example data cleaning steps, modify as needed
+    
+    '''
     if any(value is None or value == '' for value in row.values()):
         # Skip rows with missing values
+        print(row.values(),"None returned here")
         return None
-
-    row['year'] = int(row['year']) if row['year'].isdigit() else None
-    row['score'] = float(row['score']) if is_float(row['score']) else None
-    row['votes'] = int(row['votes']) if is_integer(row['votes']) else None
-    row['budget'] = clean_currency(row['budget'])
-    row['gross'] = clean_currency(row['gross'])
+    '''
+    
+    
+    if isinstance(row['year'],str):    
+        row['year'] = int(row['year']) if row['year'].isdigit() else None
+    
+    
+    if row['score'] is not None:
+        row['score'] = float(row['score']) if is_float(row['score']) else None
+    
+    if row['votes'] is not None:
+        row['votes'] = int(row['votes']) if is_integer(row['votes']) else None
+    
+    if isinstance(row['budget'],str): 
+        row['budget'] = clean_currency(row['budget'])
+    
+    if isinstance(row['gross'],str): 
+        row['gross'] = clean_currency(row['gross'])
     
     # Cleaning text data
     row['name'] = clean_text(row['name'])
@@ -91,7 +105,8 @@ def clean_data(row):
     row['company'] = clean_text(row['company'])
     
     # Date formatting
-    row['released'] = format_date(row['released'])
+    if row['released'] is not None:
+        row['released'] = format_date(row['released'])
 
     # Add more cleaning steps as needed
 
@@ -100,6 +115,7 @@ def clean_data(row):
 def drop_missing_values(data):
     # Drop rows with missing values
     cleaned_data = [clean_data(row) for row in data if clean_data(row) is not None]
+    #print('CD : ',cleaned_data)
     return cleaned_data
 
 def insertDb(csv_file_path,cursor,conn):
@@ -107,22 +123,22 @@ def insertDb(csv_file_path,cursor,conn):
     with open(csv_file_path, 'r',encoding='utf-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
         data = [row for row in csv_reader]
+        #print(data)
         cleaned_data = drop_missing_values(data)
 
-        
         for row in cleaned_data:
             cleaned_row = clean_data(row)
-            print(cleaned_row)
             insert_query = """
             INSERT INTO movies (name, rating, genre, year, released, score, votes, director, writer, star, country, budget, gross, company, runtime)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
             """
             cursor.execute(insert_query, (
                 cleaned_row['name'], cleaned_row['rating'], cleaned_row['genre'], cleaned_row['year'],
-                cleaned_row['released'].split(" ")[0], cleaned_row['score'], cleaned_row['votes'],
+                cleaned_row['released'], cleaned_row['score'], cleaned_row['votes'],
                 cleaned_row['director'], cleaned_row['writer'], cleaned_row['star'], cleaned_row['country'],
                 cleaned_row['budget'], cleaned_row['gross'], cleaned_row['company'], cleaned_row['runtime']
             ))
+            print(cleaned_row['name'], " Movie Inserted!!!")
         conn.commit()
 
     cursor.close()
