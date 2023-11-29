@@ -36,6 +36,13 @@ Execution
 python CaseStudy-Spotify.py
 ```
 
+Visualization
+
+Install the Tableau Desktop version and establish MySQL DB connection using the above-listed DB credentials and start creating worksheets using the datasource
+or open the .twb file or .twbx file
+
+Pre-requisite Note: In order to create the visualization (worksheets or dashboards) in Tableau, A database should be available with the expected DB schema and the corresponding data
+
 Contributions
 
 Group 1 (CaseStudy on Spotify Data)
@@ -46,10 +53,15 @@ Harshavardhan
 
 Citations
 
-Elgiriyewithana, N. (2023, August 26). Most streamed Spotify Songs 2023. Kaggle. https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023 
-S, T. (2021, April 14). Preliminary data analysis on Spotify data using API. Medium. https://medium.com/web-mining-is688-spring-2021/preliminary-data-analysis-on-spotify-data-using-api-a84bb0aae00c 
-Onim, J. (2022, March 25). Spotify data analysis with python. Medium. https://blog.devgenius.io/spotify-data-analysis-with-python-a727542beaa7 
-Spotify. (2023). Web api. Web API | Spotify for Developers. https://developer.spotify.com/documentation/web-api 
+Elgiriyewithana, N. (2023, August 26). Most streamed Spotify Songs 2023. Kaggle. https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023
+S, T. (2021, April 14). Preliminary data analysis on Spotify data using API. Medium. https://medium.com/web-mining-is688-spring-2021/preliminary-data-analysis-on-spotify-data-using-api-a84bb0aae00c
+Onim, J. (2022, March 25). Spotify data analysis with python. Medium. https://blog.devgenius.io/spotify-data-analysis-with-python-a727542beaa7
+Saturn Cloud: #1 rated ML platform. Saturn Cloud | #1 Rated ML Platform. (n.d.). https://saturncloud.io/#:~:text=Apache%20Zeppelin%2C%20Apache%20Superset%2C%20Tableau,effectively%20to%20non-technical%20stakeholders.
+Spotify. (2023). Web api. Web API | Spotify for Developers. https://developer.spotify.com/documentation/web-api
+Tiwari, N. (2023, May 5). Data cleaning using pandas in Python - Complete Guide for Beginners. Analytics Vidhya. https://www.analyticsvidhya.com/blog/2021/06/data-cleaning-using-pandas/
+Ngo, H. (2022, August 9). How to clean your data in python. Medium. https://towardsdatascience.com/how-to-clean-your-data-in-python-8f178638b98d
+Scott Teal  Senior Product Marketing Specialist - Tableau. (2019, July 17). How to visualize Spotify Music Trends in Tableau. Tableau. https://www.tableau.com/blog/how-visualize-spotify-music-trends-tableau
+Visualize your data. Tableau. (n.d.). https://www.tableau.com/trial/visualize-your-data?utm_campaign_id=2017049&utm_campaign=Prospecting-CORE-ALL-ALL-ALL-ALL&utm_medium=Paid%2BSearch&utm_source=Google%2BSearch&utm_language=EN&utm_country=USCA&kw=%2Bvisualization+%2Btableau&adgroup=CTX-Brand-Data%2BVisualization-B&adused=ETA&matchtype=b&placement=&d=7013y000000vYhH&cq_cmp=1695533170&cq_net=g&cq_plac=&gad_source=1&gclid=CjwKCAiAmZGrBhAnEiwAo9qHiVApynxHTRwLNcfF4PS4_WTznKk9T6sq6F8yKDoKbo-EDutPYHbdThoC1tgQAvD_BwE&gclsrc=aw.ds
 
 Contact
 
