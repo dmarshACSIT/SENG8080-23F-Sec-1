@@ -1,1 +1,1 @@
-Creted app called review app
+Created app called review app
