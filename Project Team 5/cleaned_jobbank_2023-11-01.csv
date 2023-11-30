@@ -1,18 +1,18 @@
-Job Title,Company,Location,Min Salary,Max Salary
-software developer,What Jobs,"Kitchener, ON",,
-software developer,What Jobs,"Waterloo, ON",,
-software developer,Aceit Digital Inc.,"Calgary, AB",81120.0,81120.0
-senior software developer,CloudAid Inc,"Toronto, ON",72800.0,72800.0
-software developer,MUNDAIR CONSULTING LTD.,"Guelph, ON",89960.0,89960.0
-software developer,onsemi,"Waterloo, ON",,
-software developer,HP Inc.,"Kitchener, ON",,
-software developer,What Jobs,"Kitchener, ON",,
-software developer,ALLUDO,"Waterloo, ON",,
-software developer,Clearpath Robotics,"Kitchener, ON",,
-software developer,Mako Financial Technologies Inc.,"Camrose, AB",87320.00,87320.00
-software developer,GLOBAL DEVELOPMENT WORKS LTD.,"Kitchener, ON",90480.0,90480.0
-software developer,What Jobs,"Waterloo, ON",,
-software developer,What Jobs,"Waterloo, ON",,
-software developer,"ClifyX, INC",Various locations,,
-software developer,What Jobs,"Waterloo, ON",,
-software developer,VON Canada,"Ottawa, ON",65996.00,71551.00
+Job Title,Company,Location,Min Salary,Max Salary,Retrieved Date
+software developer,What Jobs,"Kitchener, ON",,,2023-11-01
+software developer,What Jobs,"Waterloo, ON",,,2023-11-01
+software developer,Aceit Digital Inc.,"Calgary, AB",81120.0,81120.0,2023-11-01
+senior software developer,CloudAid Inc,"Toronto, ON",72800.0,72800.0,2023-11-01
+software developer,MUNDAIR CONSULTING LTD.,"Guelph, ON",89960.0,89960.0,2023-11-01
+software developer,onsemi,"Waterloo, ON",,,2023-11-01
+software developer,HP Inc.,"Kitchener, ON",,,2023-11-01
+software developer,What Jobs,"Kitchener, ON",,,2023-11-01
+software developer,ALLUDO,"Waterloo, ON",,,2023-11-01
+software developer,Clearpath Robotics,"Kitchener, ON",,,2023-11-01
+software developer,Mako Financial Technologies Inc.,"Camrose, AB",87320.00,87320.00,2023-11-01
+software developer,GLOBAL DEVELOPMENT WORKS LTD.,"Kitchener, ON",90480.0,90480.0,2023-11-01
+software developer,What Jobs,"Waterloo, ON",,,2023-11-01
+software developer,What Jobs,"Waterloo, ON",,,2023-11-01
+software developer,"ClifyX, INC",Various locations,,,2023-11-01
+software developer,What Jobs,"Waterloo, ON",,,2023-11-01
+software developer,VON Canada,"Ottawa, ON",65996.00,71551.00,2023-11-01

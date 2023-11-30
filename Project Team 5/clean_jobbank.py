@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-input_csv_filename = r"C:/Users/abdul/SENG8080-23F-Sec-1/Project Team 5/" + "jobbank_2023-11-08.csv"
+input_csv_filename = r"C:/Users/abdul/SENG8080-23F-Sec-1/Project Team 5/" + "jobbank_2023-11-22.csv"
 
 df = pd.read_csv(input_csv_filename)
 
@@ -37,6 +37,12 @@ df.drop(columns=["Estimated Salary"], inplace=True)
 
 # Display the cleaned data
 #print(input_csv_filename,"\n",df)
+
+#Add retrieved date column along with date value
+df['Retrieved Date'] = '2023-11-22'
+column_order = ['Job Title', 'Company', 'Location', 'Min Salary', 'Max Salary','Retrieved Date']#, 'Job Age']
+
+df = df[column_order]
 
 # Extract the date from the input CSV file's name
 date_from_filename = input_csv_filename.split("_")[1].split(".csv")[0]
