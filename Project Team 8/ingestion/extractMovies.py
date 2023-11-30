@@ -35,7 +35,7 @@ def extract_and_save_to_csv(conn, cursor, csv_filename):
         csv_writer = csv.writer(csvfile)
 
         # Write the header
-        csv_writer.writerow(['name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
+        csv_writer.writerow(['id','name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
                              'director', 'writer', 'star', 'country', 'budget', 'gross', 'company', 'runtime'])
 
         # Execute the SELECT query
