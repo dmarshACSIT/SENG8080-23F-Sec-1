@@ -1,0 +1,18 @@
+pip install yfinance
+
+pip install tensorflow
+
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import Dense, LSTM
+from google.cloud import bigquery
+import yfinance as yf
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+import math
+import pickle
+from sklearn.metrics import mean_squared_error
+from numpy import array
