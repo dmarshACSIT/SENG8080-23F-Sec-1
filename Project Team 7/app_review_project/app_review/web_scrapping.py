@@ -35,8 +35,8 @@ def main():
     user_reviews_dataframe = user_reviews_dataframe._append(user_reviews, ignore_index=True)
 
     # Export data to Excel
-    app_info_dataframe.to_excel('c:/Users/ajayp/Desktop/AJAY/Big_data_study/midterm-ass/app_info.xlsx', index=False)
-    user_reviews_dataframe.to_csv('c:/Users/ajayp/Desktop/AJAY/Big_data_study/midterm-ass/user_reviews.csv', index=False)
+    app_info_dataframe.to_excel('c:/Users/nileshpandey/Desktop/nilesh/Big_data_study/midterm-ass/app_info.xlsx', index=False)
+    user_reviews_dataframe.to_csv('c:/Users/nileshpandey/Desktop/nilesh/Big_data_study/midterm-ass/user_reviews.csv', index=False)
 
 if __name__ == "__main__":
     main()
