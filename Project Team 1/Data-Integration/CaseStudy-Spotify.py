@@ -124,8 +124,39 @@ def create_audio_features_table(connection):
     cursor = connection.cursor()
     cursor.execute(create_table_query)
 
+def clean_data_for_insertion(audio_features_df):
+    # Perform data cleaning and validation steps here
+  
+    # Handling Missing Values
+    audio_features_df.fillna(0, inplace=True)  # Replace missing values with 0 (assuming appropriate for numeric fields)
+    
+    # Ensure data types are correct
+    audio_features_df['Track Name'] = audio_features_df['Track Name'].astype(str)
+    audio_features_df['Artist Name'] = audio_features_df['Artist Name'].astype(str)
+    audio_features_df['Acousticness'] = audio_features_df['Acousticness'].astype(float)
+    audio_features_df['Danceability'] = audio_features_df['Danceability'].astype(float)
+    audio_features_df['Energy'] = audio_features_df['Energy'].astype(float)
+    audio_features_df['Instrumentalness'] = audio_features_df['Instrumentalness'].astype(float)
+    audio_features_df['Liveness'] = audio_features_df['Liveness'].astype(float)
+    audio_features_df['Speechiness'] = audio_features_df['Speechiness'].astype(float)
+    audio_features_df['Tempo'] = audio_features_df['Tempo'].astype(float)
+    audio_features_df['Valence'] = audio_features_df['Valence'].astype(float)
+    
+    # Data validation
+    audio_features_df['Acousticness'] = audio_features_df['Acousticness'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Danceability'] = audio_features_df['Danceability'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Energy'] = audio_features_df['Energy'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Instrumentalness'] = audio_features_df['Instrumentalness'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Liveness'] = audio_features_df['Liveness'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Speechiness'] = audio_features_df['Speechiness'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Valence'] = audio_features_df['Valence'].apply(lambda x: min(max(0, x), 1))
+    audio_features_df['Tempo'] = audio_features_df['Tempo'].apply(lambda x: min(max(0, x), 300))  # Limit tempo between 0 and 300 BPM
+    
+    return audio_features_df
+
 # Inserting the audio feature data into the DB table
 def insert_audio_features_data(connection, audio_features_df, year):
+    clean_audio_features_df = clean_data_for_insertion(audio_features_df)
     insert_query = """
     INSERT INTO audio_features (
         track_name, artist_name, acousticness, danceability, energy,
@@ -133,7 +164,7 @@ def insert_audio_features_data(connection, audio_features_df, year):
     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     cursor = connection.cursor()
-    for index, row in audio_features_df.iterrows():
+    for index, row in clean_audio_features_df.iterrows():
         values = (
             row['Track Name'],
             row['Artist Name'],
