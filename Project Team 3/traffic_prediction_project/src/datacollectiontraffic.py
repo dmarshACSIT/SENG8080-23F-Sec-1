@@ -53,7 +53,7 @@ def fetch_and_export_traffic_data():
         
         # Use the obtained coordinates for the traffic incidents query
         mapArea = kitchener_coordinates  # Use these coordinates for the traffic incidents query
-        severities = ""  # Replace with desired severities
+        severities = "4"  # Replace with desired severities
         incidentTypes = "1,2,3,4,5"  # Replace with desired incident types
 
         # Define the URL for the Bing Maps Traffic Incidents API
@@ -91,7 +91,7 @@ def fetch_and_export_traffic_data():
                 })
 
             # Destination directory for CSV export
-            export_directory = "Project Team 3/traffic_prediction_project/datasets"
+            export_directory = r'C:\Users\astle\SENG8080-23F-Sec-1\Project Team 3\traffic_prediction_project\datasets'
 
             # Create the directory if it doesn't exist
             if not os.path.exists(export_directory):
@@ -127,12 +127,12 @@ def fetch_and_export_traffic_data():
 
 
     # Schedule the job to run every 5 hours
-fetch_and_export_traffic_data()
-# schedule.every(5).hours.do(fetch_and_export_traffic_data)
+#fetch_and_export_traffic_data()
+schedule.every(5).hours.do(fetch_and_export_traffic_data)
 
-#     # Run the job indefinitely
-# while True:
-#     schedule.run_pending()
+    # Run the job indefinitely
+while True:
+    schedule.run_pending()
     
-#     time.sleep(1)
+    time.sleep(1)
 
