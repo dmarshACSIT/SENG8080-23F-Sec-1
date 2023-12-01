@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bc544f066c8a688936db24af7acc1555 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_bc544f066c8a688936db24af7acc1555" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bc544f066c8a688936db24af7acc1555 = L.map(
+                "map_bc544f066c8a688936db24af7acc1555",
+                {
+                    center: [43.43031400598285, -80.47518942288814],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6d3ebd0308c5c90d5027d6433fc6808a = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+                tile_layer_6d3ebd0308c5c90d5027d6433fc6808a.addTo(map_bc544f066c8a688936db24af7acc1555);
+    
+            var heat_map_17e3884a8c41794a4fb107db8a8c63e9 = L.heatLayer(
+                [[43.402081847241, -80.5128718248778, 1.0], [43.4369231772507, -80.5029841896353, 1.0], [43.4668879767873, -80.4675028865862, 3.0], [43.4223664273966, -80.4436558203996, 1.0], [43.4613843758325, -80.488023145286, 1.0], [43.4394362987812, -80.4997062930558, 1.0], [43.4204785599724, -80.4425757978234, 3.0], [43.4403687019276, -80.4218654436054, 3.0], [43.414190535044, -80.4689721737129, 1.0], [43.4443029334071, -80.477084169169, 3.0], [43.4339422740873, -80.4571274261162, 3.0], [43.3765533732387, -80.4226973974158, 3.0], [43.4388734001401, -80.4931671219941, 3.0], [43.387435295621, -80.4774285371285, 3.0], [43.4451024379601, -80.5221344088743, 3.0], [43.4646594498898, -80.4738654348308, 3.0], [43.4111800285076, -80.471363457516, 3.0], [43.4105101527427, -80.4672012119701, 3.0], [43.4631369678296, -80.4302062106196, 3.0], [43.4311515800434, -80.5442920485755, 1.0], [43.4683019062582, -80.4690302583747, 1.0], [43.4514630678169, -80.5167336722704, 1.0], [43.4021259496095, -80.4598682592928, 1.0], [43.4230648960439, -80.4476466678006, 3.0], [43.3960220703254, -80.462458740967, 3.0], [43.4462468652335, -80.5173781936434, 3.0], [43.4598171489973, -80.4427728587383, 3.0], [43.4119382771745, -80.5161173694985, 3.0], [43.4391472873835, -80.4935740448274, 3.0], [43.4070756769487, -80.4089531911909, 3.0], [43.4458000419304, -80.5056859413922, 3.0], [43.4526508052044, -80.5174211094828, 3.0], [43.4428363240548, -80.4737829709382, 3.0], [43.3871241501643, -80.4350248573382, 3.0], [43.4164099485537, -80.4804566661371, 1.0]],
+                {"blur": 15, "gradient": {"0.4": "blue", "0.6": "yellow", "0.8": "orange", "1": "red"}, "maxZoom": 18, "minOpacity": 0.5, "radius": 25}
+            );
+        
+    
+                heat_map_17e3884a8c41794a4fb107db8a8c63e9.addTo(map_bc544f066c8a688936db24af7acc1555);
+    
+            var marker_158799dd4d603acb5ae259ab82abacfc = L.marker(
+                [43.402081847241, -80.5128718248778],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_bca07e6da1d5bcab8c3dfbecd2396e96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_158799dd4d603acb5ae259ab82abacfc.setIcon(icon_bca07e6da1d5bcab8c3dfbecd2396e96);
+        
+    
+        var popup_7fb319f233d490009238a93bcac38bd0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d826a23ec10197d133cb0dcdbb0c4de8 = $(`<div id="html_d826a23ec10197d133cb0dcdbb0c4de8" style="width: 100.0%; height: 100.0%;">Location: 186 Henhoeffer Crescent, Kitchener, ON N2E 4E1, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_7fb319f233d490009238a93bcac38bd0.setContent(html_d826a23ec10197d133cb0dcdbb0c4de8);
+            
+        
+
+        marker_158799dd4d603acb5ae259ab82abacfc.bindPopup(popup_7fb319f233d490009238a93bcac38bd0)
+        ;
+
+        
+    
+    
+            var marker_48731353e97cd88daf56ccb9d9b217eb = L.marker(
+                [43.4369231772507, -80.5029841896353],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_e9de2d454bad7d516577ce7c71fb2058 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_48731353e97cd88daf56ccb9d9b217eb.setIcon(icon_e9de2d454bad7d516577ce7c71fb2058);
+        
+    
+        var popup_fd42dd1ff95953818ae1498e2448890b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_85d3ca2385e3bd1a701e29ef318de346 = $(`<div id="html_85d3ca2385e3bd1a701e29ef318de346" style="width: 100.0%; height: 100.0%;">Location: 1011 Queen's Blvd, Kitchener, ON N2M 1B8, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_fd42dd1ff95953818ae1498e2448890b.setContent(html_85d3ca2385e3bd1a701e29ef318de346);
+            
+        
+
+        marker_48731353e97cd88daf56ccb9d9b217eb.bindPopup(popup_fd42dd1ff95953818ae1498e2448890b)
+        ;
+
+        
+    
+    
+            var marker_47efc2e213882125cdc577a6324131c7 = L.marker(
+                [43.4668879767873, -80.4675028865862],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_89a9d70480380a76960ebf38f754c750 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_47efc2e213882125cdc577a6324131c7.setIcon(icon_89a9d70480380a76960ebf38f754c750);
+        
+    
+        var popup_279981889360553c418fbc53a1170c48 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1022f486a654482eacce878ad2758f39 = $(`<div id="html_1022f486a654482eacce878ad2758f39" style="width: 100.0%; height: 100.0%;">Location: 4 Riverbend Dr, Kitchener, ON N2B 2E6, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_279981889360553c418fbc53a1170c48.setContent(html_1022f486a654482eacce878ad2758f39);
+            
+        
+
+        marker_47efc2e213882125cdc577a6324131c7.bindPopup(popup_279981889360553c418fbc53a1170c48)
+        ;
+
+        
+    
+    
+            var marker_5ec8cfa371bbb0085f1ec00a190160e6 = L.marker(
+                [43.4223664273966, -80.4436558203996],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_893f37d7fe1d9594d0953b33c170cc0d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_5ec8cfa371bbb0085f1ec00a190160e6.setIcon(icon_893f37d7fe1d9594d0953b33c170cc0d);
+        
+    
+        var popup_29adb7fb95a1cec2dd36c373d32494a0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_51c6260ede4a8b1b333c3d3d32b79112 = $(`<div id="html_51c6260ede4a8b1b333c3d3d32b79112" style="width: 100.0%; height: 100.0%;">Location: 443 Wilson Ave, Kitchener, ON N2C 2M5, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_29adb7fb95a1cec2dd36c373d32494a0.setContent(html_51c6260ede4a8b1b333c3d3d32b79112);
+            
+        
+
+        marker_5ec8cfa371bbb0085f1ec00a190160e6.bindPopup(popup_29adb7fb95a1cec2dd36c373d32494a0)
+        ;
+
+        
+    
+    
+            var marker_d6e5a8ef723d2a4592266af8076f614b = L.marker(
+                [43.4613843758325, -80.488023145286],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_1b1c0801faec4485e4f5d782f51a72f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d6e5a8ef723d2a4592266af8076f614b.setIcon(icon_1b1c0801faec4485e4f5d782f51a72f7);
+        
+    
+        var popup_8afcc156f254fb14c251cb3b2fe875f1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8d2d74e107c0c8dad9d4a88ecd8b67bc = $(`<div id="html_8d2d74e107c0c8dad9d4a88ecd8b67bc" style="width: 100.0%; height: 100.0%;">Location: 135 St Leger St, Kitchener, ON N2H 0A6, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_8afcc156f254fb14c251cb3b2fe875f1.setContent(html_8d2d74e107c0c8dad9d4a88ecd8b67bc);
+            
+        
+
+        marker_d6e5a8ef723d2a4592266af8076f614b.bindPopup(popup_8afcc156f254fb14c251cb3b2fe875f1)
+        ;
+
+        
+    
+    
+            var marker_e556137f43f9669571aa6eddf1bd9753 = L.marker(
+                [43.4394362987812, -80.4997062930558],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_29cbd44d94affdf9f6826043f8ada315 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e556137f43f9669571aa6eddf1bd9753.setIcon(icon_29cbd44d94affdf9f6826043f8ada315);
+        
+    
+        var popup_d8b08433bf6eb0f537da9571631a7f7a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_195f262156cb59a41199e65b83e4ab41 = $(`<div id="html_195f262156cb59a41199e65b83e4ab41" style="width: 100.0%; height: 100.0%;">Location: 864 Queen's Blvd, Kitchener, ON N2M 1A7, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_d8b08433bf6eb0f537da9571631a7f7a.setContent(html_195f262156cb59a41199e65b83e4ab41);
+            
+        
+
+        marker_e556137f43f9669571aa6eddf1bd9753.bindPopup(popup_d8b08433bf6eb0f537da9571631a7f7a)
+        ;
+
+        
+    
+    
+            var marker_073835bbecd941a17239e7efddf6c8a9 = L.marker(
+                [43.4204785599724, -80.4425757978234],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_124e131b5feaaf69c823ef8882d2c4f2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_073835bbecd941a17239e7efddf6c8a9.setIcon(icon_124e131b5feaaf69c823ef8882d2c4f2);
+        
+    
+        var popup_1448c325ee3a16bcf3d91f109502a1e0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f3de5bedd4d1164582bc2f6f0aa9296b = $(`<div id="html_f3de5bedd4d1164582bc2f6f0aa9296b" style="width: 100.0%; height: 100.0%;">Location: 503 Wilson Ave, Kitchener, ON N2C 2M4, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_1448c325ee3a16bcf3d91f109502a1e0.setContent(html_f3de5bedd4d1164582bc2f6f0aa9296b);
+            
+        
+
+        marker_073835bbecd941a17239e7efddf6c8a9.bindPopup(popup_1448c325ee3a16bcf3d91f109502a1e0)
+        ;
+
+        
+    
+    
+            var marker_73987ce168e1fc91980a5163c4ccbd1f = L.marker(
+                [43.4403687019276, -80.4218654436054],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_7dcd97b7ea33473752dc5b406a29568d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_73987ce168e1fc91980a5163c4ccbd1f.setIcon(icon_7dcd97b7ea33473752dc5b406a29568d);
+        
+    
+        var popup_f95a51b4c6cbb9d9fb611afb8b6b08cb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b55ecd59364e7c289d8ce2aeca3c96f2 = $(`<div id="html_b55ecd59364e7c289d8ce2aeca3c96f2" style="width: 100.0%; height: 100.0%;">Location: 326 Briarmeadow Dr, Kitchener, ON N2A 4L1, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_f95a51b4c6cbb9d9fb611afb8b6b08cb.setContent(html_b55ecd59364e7c289d8ce2aeca3c96f2);
+            
+        
+
+        marker_73987ce168e1fc91980a5163c4ccbd1f.bindPopup(popup_f95a51b4c6cbb9d9fb611afb8b6b08cb)
+        ;
+
+        
+    
+    
+            var marker_d37ff92d5f508cef0f65343fe074d379 = L.marker(
+                [43.414190535044, -80.4689721737129],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_61563eeb1216e88a2c89851f31e5243b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d37ff92d5f508cef0f65343fe074d379.setIcon(icon_61563eeb1216e88a2c89851f31e5243b);
+        
+    
+        var popup_e00b0ca37d636ac85b243bdab039e64b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_00a5be8771c589411587082775731523 = $(`<div id="html_00a5be8771c589411587082775731523" style="width: 100.0%; height: 100.0%;">Location: 245 Country Hill Dr, Kitchener, ON N2E 2C1, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_e00b0ca37d636ac85b243bdab039e64b.setContent(html_00a5be8771c589411587082775731523);
+            
+        
+
+        marker_d37ff92d5f508cef0f65343fe074d379.bindPopup(popup_e00b0ca37d636ac85b243bdab039e64b)
+        ;
+
+        
+    
+    
+            var marker_730f6032d7485a80d6faa88bbe8d7c21 = L.marker(
+                [43.4443029334071, -80.477084169169],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_547078f84596c9ebaac617505ed69383 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_730f6032d7485a80d6faa88bbe8d7c21.setIcon(icon_547078f84596c9ebaac617505ed69383);
+        
+    
+        var popup_b33141305b65493c91e0cf9e4e69d1ec = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2c60ce2af6cc141c3ed6cb8af91c2bfe = $(`<div id="html_2c60ce2af6cc141c3ed6cb8af91c2bfe" style="width: 100.0%; height: 100.0%;">Location: 2 Stirling Ave S, Kitchener, ON N2G 3N6, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_b33141305b65493c91e0cf9e4e69d1ec.setContent(html_2c60ce2af6cc141c3ed6cb8af91c2bfe);
+            
+        
+
+        marker_730f6032d7485a80d6faa88bbe8d7c21.bindPopup(popup_b33141305b65493c91e0cf9e4e69d1ec)
+        ;
+
+        
+    
+    
+            var marker_bf52c02ec1d3918939b1ac994fb33b4e = L.marker(
+                [43.4339422740873, -80.4571274261162],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_08da2bc16fe9aa6945e560d17e538c14 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_bf52c02ec1d3918939b1ac994fb33b4e.setIcon(icon_08da2bc16fe9aa6945e560d17e538c14);
+        
+    
+        var popup_11ba2b42e012601eeee3810a92ca5401 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fc2c3464e0efde075bfbecc513c30db2 = $(`<div id="html_fc2c3464e0efde075bfbecc513c30db2" style="width: 100.0%; height: 100.0%;">Location: 75 Eckert St, Kitchener, ON N2C 1N3, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_11ba2b42e012601eeee3810a92ca5401.setContent(html_fc2c3464e0efde075bfbecc513c30db2);
+            
+        
+
+        marker_bf52c02ec1d3918939b1ac994fb33b4e.bindPopup(popup_11ba2b42e012601eeee3810a92ca5401)
+        ;
+
+        
+    
+    
+            var marker_e36d6125980b71b6e5cc37825dbbc0c3 = L.marker(
+                [43.3765533732387, -80.4226973974158],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_c7c6ad501a570819d8762261101b8cf6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_e36d6125980b71b6e5cc37825dbbc0c3.setIcon(icon_c7c6ad501a570819d8762261101b8cf6);
+        
+    
+        var popup_bd2ba9782da8cf6458f622621d671e7a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e1a803a66e3ed34e089d52051f3334a2 = $(`<div id="html_e1a803a66e3ed34e089d52051f3334a2" style="width: 100.0%; height: 100.0%;">Location: 633 Thomas Slee Dr, Kitchener, ON N2P 2Y8, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_bd2ba9782da8cf6458f622621d671e7a.setContent(html_e1a803a66e3ed34e089d52051f3334a2);
+            
+        
+
+        marker_e36d6125980b71b6e5cc37825dbbc0c3.bindPopup(popup_bd2ba9782da8cf6458f622621d671e7a)
+        ;
+
+        
+    
+    
+            var marker_af31eb503b8216c16b0d6bca74cda458 = L.marker(
+                [43.4388734001401, -80.4931671219941],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_1790b6adf8f5d927df316aca90c2fdc4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_af31eb503b8216c16b0d6bca74cda458.setIcon(icon_1790b6adf8f5d927df316aca90c2fdc4);
+        
+    
+        var popup_b60e452e641951bde79b0b162b8f360f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fd011e7c476e59a51042b1cc538afa6d = $(`<div id="html_fd011e7c476e59a51042b1cc538afa6d" style="width: 100.0%; height: 100.0%;">Location: 159 Highland Rd E, Kitchener, ON N2M 3W1, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_b60e452e641951bde79b0b162b8f360f.setContent(html_fd011e7c476e59a51042b1cc538afa6d);
+            
+        
+
+        marker_af31eb503b8216c16b0d6bca74cda458.bindPopup(popup_b60e452e641951bde79b0b162b8f360f)
+        ;
+
+        
+    
+    
+            var marker_ddfa419736978bb404a6ffc5400982cc = L.marker(
+                [43.387435295621, -80.4774285371285],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_641b399818d0e0ef2b769e6a9b30ba76 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_ddfa419736978bb404a6ffc5400982cc.setIcon(icon_641b399818d0e0ef2b769e6a9b30ba76);
+        
+    
+        var popup_d3365c9e3d13b3053611dc5596cd243f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8de8b7f8f7cbae6f6c5fd33f9ce0398d = $(`<div id="html_8de8b7f8f7cbae6f6c5fd33f9ce0398d" style="width: 100.0%; height: 100.0%;">Location: 210 Maitland St, Kitchener, ON N2R 0C3, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_d3365c9e3d13b3053611dc5596cd243f.setContent(html_8de8b7f8f7cbae6f6c5fd33f9ce0398d);
+            
+        
+
+        marker_ddfa419736978bb404a6ffc5400982cc.bindPopup(popup_d3365c9e3d13b3053611dc5596cd243f)
+        ;
+
+        
+    
+    
+            var marker_5dcae4c36b4aeb8341ef6157ef92fce1 = L.marker(
+                [43.4451024379601, -80.5221344088743],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_c8de5ff991aae20f3966161c1c4ec389 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_5dcae4c36b4aeb8341ef6157ef92fce1.setIcon(icon_c8de5ff991aae20f3966161c1c4ec389);
+        
+    
+        var popup_73511521100ca08709bd69a95652a7e0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_513486d28104bca9ed446a49446e1ee1 = $(`<div id="html_513486d28104bca9ed446a49446e1ee1" style="width: 100.0%; height: 100.0%;">Location: 4-428 Gage Ave, Kitchener, ON N2M 5C9, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_73511521100ca08709bd69a95652a7e0.setContent(html_513486d28104bca9ed446a49446e1ee1);
+            
+        
+
+        marker_5dcae4c36b4aeb8341ef6157ef92fce1.bindPopup(popup_73511521100ca08709bd69a95652a7e0)
+        ;
+
+        
+    
+    
+            var marker_9ae2e963162975b05683364a1e28f39c = L.marker(
+                [43.4646594498898, -80.4738654348308],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_19f6a209559bbc053065a393d5939055 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_9ae2e963162975b05683364a1e28f39c.setIcon(icon_19f6a209559bbc053065a393d5939055);
+        
+    
+        var popup_1a7b611694c107e4096d761c66fafc87 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f8651bc375a00783a198e930f6ada14e = $(`<div id="html_f8651bc375a00783a198e930f6ada14e" style="width: 100.0%; height: 100.0%;">Location: Wellington St N, Kitchener, ON N2H 5X8, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_1a7b611694c107e4096d761c66fafc87.setContent(html_f8651bc375a00783a198e930f6ada14e);
+            
+        
+
+        marker_9ae2e963162975b05683364a1e28f39c.bindPopup(popup_1a7b611694c107e4096d761c66fafc87)
+        ;
+
+        
+    
+    
+            var marker_959167ba12a4d459f8504ec0b6c14214 = L.marker(
+                [43.4111800285076, -80.471363457516],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_1efcb6aa2fc0ee171d23e219830b0dc8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_959167ba12a4d459f8504ec0b6c14214.setIcon(icon_1efcb6aa2fc0ee171d23e219830b0dc8);
+        
+    
+        var popup_3bc75d10d4e854f73f2036b041354a58 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ddbce631f5a7cd8075cd15e94186bf5e = $(`<div id="html_ddbce631f5a7cd8075cd15e94186bf5e" style="width: 100.0%; height: 100.0%;">Location: 60 Century Hill Dr, Kitchener, ON N2E 2E2, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_3bc75d10d4e854f73f2036b041354a58.setContent(html_ddbce631f5a7cd8075cd15e94186bf5e);
+            
+        
+
+        marker_959167ba12a4d459f8504ec0b6c14214.bindPopup(popup_3bc75d10d4e854f73f2036b041354a58)
+        ;
+
+        
+    
+    
+            var marker_da0c34c07c167fb10eff5c46d86e6518 = L.marker(
+                [43.4105101527427, -80.4672012119701],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_580064077cb237e308e17e6a7b451409 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_da0c34c07c167fb10eff5c46d86e6518.setIcon(icon_580064077cb237e308e17e6a7b451409);
+        
+    
+        var popup_b2893846af55335f70b0a4b43947300f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a094373e17fba156df78d490e63a7733 = $(`<div id="html_a094373e17fba156df78d490e63a7733" style="width: 100.0%; height: 100.0%;">Location: 370 Country Hill Dr, Kitchener, ON N2E 2K9, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_b2893846af55335f70b0a4b43947300f.setContent(html_a094373e17fba156df78d490e63a7733);
+            
+        
+
+        marker_da0c34c07c167fb10eff5c46d86e6518.bindPopup(popup_b2893846af55335f70b0a4b43947300f)
+        ;
+
+        
+    
+    
+            var marker_1682eb8a1a466597b4a7f0f4c813c30c = L.marker(
+                [43.4631369678296, -80.4302062106196],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_6570efcfb0abddb804f6b6c32a61a70a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_1682eb8a1a466597b4a7f0f4c813c30c.setIcon(icon_6570efcfb0abddb804f6b6c32a61a70a);
+        
+    
+        var popup_77d4cfbb40263abaebe790a2aa43cc27 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_25a14c8ec964fd701fcbc5040dd2fa9f = $(`<div id="html_25a14c8ec964fd701fcbc5040dd2fa9f" style="width: 100.0%; height: 100.0%;">Location: 338 Keewatin Ave, Kitchener, ON N2B 3W6, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_77d4cfbb40263abaebe790a2aa43cc27.setContent(html_25a14c8ec964fd701fcbc5040dd2fa9f);
+            
+        
+
+        marker_1682eb8a1a466597b4a7f0f4c813c30c.bindPopup(popup_77d4cfbb40263abaebe790a2aa43cc27)
+        ;
+
+        
+    
+    
+            var marker_cda4eb0203642d19968d5c2942cee9f1 = L.marker(
+                [43.4311515800434, -80.5442920485755],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_00811a97bd9f4da95c8b723f3006273d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_cda4eb0203642d19968d5c2942cee9f1.setIcon(icon_00811a97bd9f4da95c8b723f3006273d);
+        
+    
+        var popup_2a797c073647ceee3b831aa87c65eea5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dd7f3d3975eb0c9b5483a46e5e697e85 = $(`<div id="html_dd7f3d3975eb0c9b5483a46e5e697e85" style="width: 100.0%; height: 100.0%;">Location: 2 Hidden Creek Dr, Kitchener, ON N2N 3L8, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_2a797c073647ceee3b831aa87c65eea5.setContent(html_dd7f3d3975eb0c9b5483a46e5e697e85);
+            
+        
+
+        marker_cda4eb0203642d19968d5c2942cee9f1.bindPopup(popup_2a797c073647ceee3b831aa87c65eea5)
+        ;
+
+        
+    
+    
+            var marker_ee1e5a7aca2ff4cd4b5835ad52ed2d40 = L.marker(
+                [43.4683019062582, -80.4690302583747],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_665ff589a7597204c9dfe1ec70d1e622 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ee1e5a7aca2ff4cd4b5835ad52ed2d40.setIcon(icon_665ff589a7597204c9dfe1ec70d1e622);
+        
+    
+        var popup_c63c6a3c697bfaa0db53fbc8e915d71f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_02aeb7a90ee6dc885ecd23aa6f86ebec = $(`<div id="html_02aeb7a90ee6dc885ecd23aa6f86ebec" style="width: 100.0%; height: 100.0%;">Location: 196 Riverbend Dr, Kitchener, ON N2B 2E8, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_c63c6a3c697bfaa0db53fbc8e915d71f.setContent(html_02aeb7a90ee6dc885ecd23aa6f86ebec);
+            
+        
+
+        marker_ee1e5a7aca2ff4cd4b5835ad52ed2d40.bindPopup(popup_c63c6a3c697bfaa0db53fbc8e915d71f)
+        ;
+
+        
+    
+    
+            var marker_7c19a22feda7bb86a41b6801ed03f25f = L.marker(
+                [43.4514630678169, -80.5167336722704],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_bfaa2d0bd2d4f6a78afc79906879ec2c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_7c19a22feda7bb86a41b6801ed03f25f.setIcon(icon_bfaa2d0bd2d4f6a78afc79906879ec2c);
+        
+    
+        var popup_9c6151b4bad4d7c5dc0eeec242c0a691 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_80b48f29d55d1d067d8a9b2f737af682 = $(`<div id="html_80b48f29d55d1d067d8a9b2f737af682" style="width: 100.0%; height: 100.0%;">Location: 608 Belmont Ave W, Kitchener, ON N2M 1N4, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_9c6151b4bad4d7c5dc0eeec242c0a691.setContent(html_80b48f29d55d1d067d8a9b2f737af682);
+            
+        
+
+        marker_7c19a22feda7bb86a41b6801ed03f25f.bindPopup(popup_9c6151b4bad4d7c5dc0eeec242c0a691)
+        ;
+
+        
+    
+    
+            var marker_c5c17ce5af43aea7ce6ae34c324f35b5 = L.marker(
+                [43.4021259496095, -80.4598682592928],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_45e659f43cd86d6ec7049dac39fc89a4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c5c17ce5af43aea7ce6ae34c324f35b5.setIcon(icon_45e659f43cd86d6ec7049dac39fc89a4);
+        
+    
+        var popup_9ad4d87d27dae3c7dffb2894319704a1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f8fcb376f712cd7df1de2f5428f0f49e = $(`<div id="html_f8fcb376f712cd7df1de2f5428f0f49e" style="width: 100.0%; height: 100.0%;">Location: 54 Beasley Dr, Kitchener, ON N2E 1X7, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_9ad4d87d27dae3c7dffb2894319704a1.setContent(html_f8fcb376f712cd7df1de2f5428f0f49e);
+            
+        
+
+        marker_c5c17ce5af43aea7ce6ae34c324f35b5.bindPopup(popup_9ad4d87d27dae3c7dffb2894319704a1)
+        ;
+
+        
+    
+    
+            var marker_18a73f5537340313ad07f08272802e90 = L.marker(
+                [43.4230648960439, -80.4476466678006],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_59428bc1938ab0a8b471d62fadcad077 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_18a73f5537340313ad07f08272802e90.setIcon(icon_59428bc1938ab0a8b471d62fadcad077);
+        
+    
+        var popup_6712255cd5df9e2c844ec4dd0a1d7fa7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_71b4821513e8dda4bb3e082023b540a2 = $(`<div id="html_71b4821513e8dda4bb3e082023b540a2" style="width: 100.0%; height: 100.0%;">Location: 171 Traynor Ave, Kitchener, ON N2C 1W4, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_6712255cd5df9e2c844ec4dd0a1d7fa7.setContent(html_71b4821513e8dda4bb3e082023b540a2);
+            
+        
+
+        marker_18a73f5537340313ad07f08272802e90.bindPopup(popup_6712255cd5df9e2c844ec4dd0a1d7fa7)
+        ;
+
+        
+    
+    
+            var marker_dce80549903f726056eb1d62593e115a = L.marker(
+                [43.3960220703254, -80.462458740967],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_9b8a607bf9f8ea4ca0fe7a3f39f1c214 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_dce80549903f726056eb1d62593e115a.setIcon(icon_9b8a607bf9f8ea4ca0fe7a3f39f1c214);
+        
+    
+        var popup_6cdf21db0a52966447123cf666e8f724 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_53e8b3da69754a52cfab5af02eb4b196 = $(`<div id="html_53e8b3da69754a52cfab5af02eb4b196" style="width: 100.0%; height: 100.0%;">Location: 1606D Battler Rd, Kitchener, ON N2R 1P9, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_6cdf21db0a52966447123cf666e8f724.setContent(html_53e8b3da69754a52cfab5af02eb4b196);
+            
+        
+
+        marker_dce80549903f726056eb1d62593e115a.bindPopup(popup_6cdf21db0a52966447123cf666e8f724)
+        ;
+
+        
+    
+    
+            var marker_8d19a765351343c20b58af03913975bc = L.marker(
+                [43.4462468652335, -80.5173781936434],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_859e6dc028f9318af09eaa8b66eec6d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_8d19a765351343c20b58af03913975bc.setIcon(icon_859e6dc028f9318af09eaa8b66eec6d7);
+        
+    
+        var popup_0caedc24fd35c5ccb7dadc52563a5aa6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bb12c24be69cdfeffeb0922605e09d87 = $(`<div id="html_bb12c24be69cdfeffeb0922605e09d87" style="width: 100.0%; height: 100.0%;">Location: 295 Gage Ave, Kitchener, ON N2M 2C9, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_0caedc24fd35c5ccb7dadc52563a5aa6.setContent(html_bb12c24be69cdfeffeb0922605e09d87);
+            
+        
+
+        marker_8d19a765351343c20b58af03913975bc.bindPopup(popup_0caedc24fd35c5ccb7dadc52563a5aa6)
+        ;
+
+        
+    
+    
+            var marker_88d5659190e38a5f9866b632776ca19f = L.marker(
+                [43.4598171489973, -80.4427728587383],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_775a35923cfd9f14005947860e984ab4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_88d5659190e38a5f9866b632776ca19f.setIcon(icon_775a35923cfd9f14005947860e984ab4);
+        
+    
+        var popup_ebfd8c8ec127b71f1e75d2e6bc59bb60 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ffefe856ed8b2135c11ab9c73bf0c1cc = $(`<div id="html_ffefe856ed8b2135c11ab9c73bf0c1cc" style="width: 100.0%; height: 100.0%;">Location: 4 Montcalm Dr, Kitchener, ON N2B 2P8, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_ebfd8c8ec127b71f1e75d2e6bc59bb60.setContent(html_ffefe856ed8b2135c11ab9c73bf0c1cc);
+            
+        
+
+        marker_88d5659190e38a5f9866b632776ca19f.bindPopup(popup_ebfd8c8ec127b71f1e75d2e6bc59bb60)
+        ;
+
+        
+    
+    
+            var marker_1396d53c63a479179aae504fe5580532 = L.marker(
+                [43.4119382771745, -80.5161173694985],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_7a72c688efb88d217584609f36141d9f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_1396d53c63a479179aae504fe5580532.setIcon(icon_7a72c688efb88d217584609f36141d9f);
+        
+    
+        var popup_7c84863a6ce76a92dbf3c311281f3821 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_724dbd8de22aa0bae5cc9441fc607cb0 = $(`<div id="html_724dbd8de22aa0bae5cc9441fc607cb0" style="width: 100.0%; height: 100.0%;">Location: 70 Wilderness Dr, Kitchener, ON N2E 3P2, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_7c84863a6ce76a92dbf3c311281f3821.setContent(html_724dbd8de22aa0bae5cc9441fc607cb0);
+            
+        
+
+        marker_1396d53c63a479179aae504fe5580532.bindPopup(popup_7c84863a6ce76a92dbf3c311281f3821)
+        ;
+
+        
+    
+    
+            var marker_20b4d3f355519ed30f5f34c9abdf489a = L.marker(
+                [43.4391472873835, -80.4935740448274],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_6bda8eed2cb073e1489a7ad880e4c9ed = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_20b4d3f355519ed30f5f34c9abdf489a.setIcon(icon_6bda8eed2cb073e1489a7ad880e4c9ed);
+        
+    
+        var popup_797574d4608b3b37f29be7bcc18723c1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_49eb2fc0a66b728242435ec218be98d0 = $(`<div id="html_49eb2fc0a66b728242435ec218be98d0" style="width: 100.0%; height: 100.0%;">Location: 125 Highland Rd E, Kitchener, ON N2M 3V9, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_797574d4608b3b37f29be7bcc18723c1.setContent(html_49eb2fc0a66b728242435ec218be98d0);
+            
+        
+
+        marker_20b4d3f355519ed30f5f34c9abdf489a.bindPopup(popup_797574d4608b3b37f29be7bcc18723c1)
+        ;
+
+        
+    
+    
+            var marker_aa86db9f2620a7274458824bfa16ec86 = L.marker(
+                [43.4070756769487, -80.4089531911909],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_e337c40260933bfd15a53d896895fbc9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_aa86db9f2620a7274458824bfa16ec86.setIcon(icon_e337c40260933bfd15a53d896895fbc9);
+        
+    
+        var popup_d0630f9d0dfd10df05886768fd405fd8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_148061c025436d3f208c4866bc99e74b = $(`<div id="html_148061c025436d3f208c4866bc99e74b" style="width: 100.0%; height: 100.0%;">Location: 185 Deer Ridge Dr, Kitchener, ON N2P 2K5, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_d0630f9d0dfd10df05886768fd405fd8.setContent(html_148061c025436d3f208c4866bc99e74b);
+            
+        
+
+        marker_aa86db9f2620a7274458824bfa16ec86.bindPopup(popup_d0630f9d0dfd10df05886768fd405fd8)
+        ;
+
+        
+    
+    
+            var marker_4167f41ab21ad09a8f04163f28393de3 = L.marker(
+                [43.4458000419304, -80.5056859413922],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_623837c0136b15d9e97d629313043beb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_4167f41ab21ad09a8f04163f28393de3.setIcon(icon_623837c0136b15d9e97d629313043beb);
+        
+    
+        var popup_440970d690b99bab1192cecd6832fb01 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3716e2c07cc0ef2f6b4c0686a7219584 = $(`<div id="html_3716e2c07cc0ef2f6b4c0686a7219584" style="width: 100.0%; height: 100.0%;">Location: 256 Victoria St S, Kitchener, ON N2G 2C2, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_440970d690b99bab1192cecd6832fb01.setContent(html_3716e2c07cc0ef2f6b4c0686a7219584);
+            
+        
+
+        marker_4167f41ab21ad09a8f04163f28393de3.bindPopup(popup_440970d690b99bab1192cecd6832fb01)
+        ;
+
+        
+    
+    
+            var marker_3ba4a7d3a8a38953d481a9bfd409422d = L.marker(
+                [43.4526508052044, -80.5174211094828],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_a213e7578812bde046205c41096c27fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_3ba4a7d3a8a38953d481a9bfd409422d.setIcon(icon_a213e7578812bde046205c41096c27fb);
+        
+    
+        var popup_6ba5d8d168a06a357c3ce1227d7a60f0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b56f9ef231a5556937c5cf8d72fe6afd = $(`<div id="html_b56f9ef231a5556937c5cf8d72fe6afd" style="width: 100.0%; height: 100.0%;">Location: 660 Belmont Ave W, Kitchener, ON N2M 1N7, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_6ba5d8d168a06a357c3ce1227d7a60f0.setContent(html_b56f9ef231a5556937c5cf8d72fe6afd);
+            
+        
+
+        marker_3ba4a7d3a8a38953d481a9bfd409422d.bindPopup(popup_6ba5d8d168a06a357c3ce1227d7a60f0)
+        ;
+
+        
+    
+    
+            var marker_9bc9d3c4324a349fca740f5bd71bb6eb = L.marker(
+                [43.4428363240548, -80.4737829709382],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_f7c3220f6288a94131aab2d80c4d750a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_9bc9d3c4324a349fca740f5bd71bb6eb.setIcon(icon_f7c3220f6288a94131aab2d80c4d750a);
+        
+    
+        var popup_1b02921fd53a385d73def0f776d84bae = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6bd1efd129ae551b9d49a8b87b33aaee = $(`<div id="html_6bd1efd129ae551b9d49a8b87b33aaee" style="width: 100.0%; height: 100.0%;">Location: 964 King St E, Kitchener, ON N2G 2M9, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_1b02921fd53a385d73def0f776d84bae.setContent(html_6bd1efd129ae551b9d49a8b87b33aaee);
+            
+        
+
+        marker_9bc9d3c4324a349fca740f5bd71bb6eb.bindPopup(popup_1b02921fd53a385d73def0f776d84bae)
+        ;
+
+        
+    
+    
+            var marker_665eba70c5593a6918f67718f238f53f = L.marker(
+                [43.3871241501643, -80.4350248573382],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_1e1d244e13f5f9f8f319c6f96cf95eab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_665eba70c5593a6918f67718f238f53f.setIcon(icon_1e1d244e13f5f9f8f319c6f96cf95eab);
+        
+    
+        var popup_962ef1706efa26cc3ae0251ae6145fad = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_abba83d220abebecc7ee366c09c31f3f = $(`<div id="html_abba83d220abebecc7ee366c09c31f3f" style="width: 100.0%; height: 100.0%;">Location: 242 Doon Mills Dr, Kitchener, ON N2P 2R8, Canada, Predicted Severity: Moderate</div>`)[0];
+                popup_962ef1706efa26cc3ae0251ae6145fad.setContent(html_abba83d220abebecc7ee366c09c31f3f);
+            
+        
+
+        marker_665eba70c5593a6918f67718f238f53f.bindPopup(popup_962ef1706efa26cc3ae0251ae6145fad)
+        ;
+
+        
+    
+    
+            var marker_e9c96fb6bdadb874f49ec6eed869b209 = L.marker(
+                [43.4164099485537, -80.4804566661371],
+                {}
+            ).addTo(map_bc544f066c8a688936db24af7acc1555);
+        
+    
+            var icon_dc8d320c26d35c61e1582822ea0dc87b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e9c96fb6bdadb874f49ec6eed869b209.setIcon(icon_dc8d320c26d35c61e1582822ea0dc87b);
+        
+    
+        var popup_1848a3a4a800f4fe0adae00c8a760c24 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f7045e8f241c4b3813faa9ae7ab70338 = $(`<div id="html_f7045e8f241c4b3813faa9ae7ab70338" style="width: 100.0%; height: 100.0%;">Location: 634 Strasburg Rd, Kitchener, ON N2E 2G8, Canada, Predicted Severity: Low Impact</div>`)[0];
+                popup_1848a3a4a800f4fe0adae00c8a760c24.setContent(html_f7045e8f241c4b3813faa9ae7ab70338);
+            
+        
+
+        marker_e9c96fb6bdadb874f49ec6eed869b209.bindPopup(popup_1848a3a4a800f4fe0adae00c8a760c24)
+        ;
+
+        
+    
+</script>
+</html>
