@@ -33,7 +33,7 @@ def get_bounding_box(center_lat, center_lon, distance_km):
 
 def fetch_and_export_traffic_data():
     print("Running data collection code.......")
-    # Define your Bing Maps API key
+    # Bing Maps API key
     bing_maps_key = "AhW5_RFhg-QzrA95-uhpppal-B-eWgwCocRhhlmnB_ZYJniwj3cgHICbv3dXGn6F"
 
     # Define the parameters for the geocoding API request
@@ -53,7 +53,7 @@ def fetch_and_export_traffic_data():
         
         # Use the obtained coordinates for the traffic incidents query
         mapArea = kitchener_coordinates  # Use these coordinates for the traffic incidents query
-        severities = "4"  # Replace with desired severities
+        severities = ""  # Replace with desired severities
         incidentTypes = "1,2,3,4,5"  # Replace with desired incident types
 
         # Define the URL for the Bing Maps Traffic Incidents API
@@ -65,7 +65,7 @@ def fetch_and_export_traffic_data():
         if response.status_code == 200:
             api_data = response.json()
 
-            # Extract and transform the data as needed
+            # Extract and transform the data
             extracted_data = []
             resource_set = api_data.get("resourceSets", [])[0]
             for resource in resource_set.get("resources", []):
@@ -126,11 +126,11 @@ def fetch_and_export_traffic_data():
 
 
 
-    # Schedule the job to run every 5 hours
+# Schedule the job to run every 5 hours
 #fetch_and_export_traffic_data()
 schedule.every(5).hours.do(fetch_and_export_traffic_data)
 
-    # Run the job indefinitely
+# Run the job indefinitely
 while True:
     schedule.run_pending()
     

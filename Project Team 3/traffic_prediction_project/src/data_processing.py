@@ -6,10 +6,10 @@ def convert_milliseconds_to_datetime(milliseconds):
     return datetime.utcfromtimestamp(seconds).strftime('%Y-%m-%d %H:%M:%S')
 
 def load_traffic_data(data_path):
-    df = pd.read_csv(data_path)  # Load your historical traffic data here
+    df = pd.read_csv(data_path)  
 
 
-    # Assuming df is your DataFrame and 'start' is the column with date strings
+    
     df['start'] = df['start'].apply(lambda x: convert_milliseconds_to_datetime(int(x[6:-2])))
     df['start'] = pd.to_datetime(df['start'])
     df['start'] = pd.to_datetime(df['start'])
